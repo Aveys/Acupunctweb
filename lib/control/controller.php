@@ -12,9 +12,19 @@ require_once 'lib/model/user.php';
 function initAll()
 {
     global $template;
+    global $db;
 
-    $template->assign("SESSION",$_SESSION);
-    database::initDB(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
+    foreach($_SESSION as $key => $value)
+    {
+        $template->assign($key, $value);
+    }
+    if(!isset($_SESSION['loginConnection']))
+    {
+        $template->assign('loginConnection', 'disconnected');
+    }
+    unset($_SESSION['loginConnection']);
+    $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
+    //$db->initDB(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
 }
 
 /*function user_connect($login, $pwd)

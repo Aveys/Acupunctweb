@@ -5,7 +5,8 @@
  * Date: 26/02/15
  * Time: 08:41
  */
-
+//error_reporting(E_ALL | E_STRICT);
+//ini_set('display_errors', true);
 include 'inc/rain.tpl.class.php';
 require_once 'lib/control/controller.php';
 require_once 'config.php';

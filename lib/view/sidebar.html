@@ -2,24 +2,31 @@
 <div id="sidebar" class="col-sm-3 col-sm-offset-1 blog-sidebar">
     <div class="sidebar-module sidebar-module-inset connexion-module">
         <h2>Mon compte</h2>
-        {if="$SESSION.loginConnection==invalidSession"}
-        <div class="text-success"><p>Bienvenue {$SESSION.userName} !</p></div>
+        {if="$loginConnection=='connected'"}
+        <div class="text"><p>Bienvenue {$userName} !</p></div>
         {else}
-        <form>
+        <form method="post" action="lib/control/action.php?action=connect">
             <div class="form-group">
-                <label class="sr-only" for="exampleInputEmail3">Adresse mail</label>
-                <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Entrez votre email">
+                <label class="sr-only" for="login">Adresse mail</label>
+                <input name="login" type="text" class="form-control" id="login" placeholder="Entrez votre login">
             </div>
             <div class="form-group">
-                <label class="sr-only" for="exampleInputPassword3">Mot de passe</label>
-                <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Mot de passe">
+                <label class="sr-only" for="pwd">Mot de passe</label>
+                <input name="pwd" type="password" class="form-control" id="pwd" placeholder="Mot de passe">
             </div>
 
-            {if="$SESSION.loginConnection=invalidLogin"}
-            <div class="text-danger"><p>Erreur lors de l'authentification</p></div>
+            {if="$loginConnection=='invalidLogin'"}
+                <div class="alert alert-danger" role="alert">
+                    Erreur lors de l'authentification.
+                </div>
             {else}
+                {if="$loginConnection=='invalidInput'"}
+                    <div class="alert alert-danger" role="alert">
+                        Login incorrect.
+                    </div>
+                {else}
+                {/if}
             {/if}
-            <input type="hidden" value="connect"/>
             <button type="submit" class="btn btn-default">Se connecter</button>
         </form>
         {/if}
