@@ -26,15 +26,7 @@ function initAll()
 
 function user_connect()
 {
-    global $template;
-    if(isset($_POST['login']) && isset($_POST['pwd'])
-        && user_connect($_POST['login'],$_POST['pwd']) == true)
-    {
-        $template->assign('loginConnection', 'connected');
-    }else{
-        // Cannot connect.
-        $template->assign('loginConnection', 'invalid');
-    }
+
 }
 
 function user_disconnect()

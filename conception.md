@@ -15,3 +15,6 @@ Guide d'accesibilité ARIA pour le JS
 ## Variables template
 * loginConnection: invalid/connected/disconnected
 * user: string
+
+## Variables Session
+* loginConnection: invalidLogin/invalidInput/connected
