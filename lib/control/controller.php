@@ -12,6 +12,11 @@ require_once 'lib/model/user.php';
 function initAll()
 {
     global $template;
+
+    foreach($_SESSION as $key => $value)
+    {
+        $template->assign($key,$value);
+    }
     database::initDB(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
 
     if(isset($_SESSION['user']))
