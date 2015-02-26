@@ -18,15 +18,6 @@ function initAll()
         $template->assign($key,$value);
     }
     database::initDB(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
-
-    if(isset($_SESSION['user']))
-    {
-        $template->assign('user', $_SESSION['user']);
-        $template->assign('loginConnection', 'connected');
-    }else{
-        $template->assign('user','NULL');
-        $template->assign('loginConnection', 'disconnected');
-    }
 }
 
 function user_connect()
