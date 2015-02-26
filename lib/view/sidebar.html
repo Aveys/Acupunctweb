@@ -3,6 +3,7 @@
         <h2>Mon compte</h2>
         {if="$SESSION.loginConnection=connected"}
         <div class="text-success"><p>Bienvenue {$SESSION.userName} !</p></div>
+        {else}
         <form>
             <div class="form-group">
                 <label class="sr-only" for="exampleInputEmail3">Adresse mail</label>
@@ -20,6 +21,7 @@
             <input type="hidden" value="connect"/>
             <button type="submit" class="btn btn-default">Se connecter</button>
         </form>
+        {/if}
     </div>
     <div class="sidebar-module">
         <h2>Autres</h2>
