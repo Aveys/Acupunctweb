@@ -13,9 +13,7 @@ function initAll()
 {
     global $template;
 
-
-        $template->assign("SESSION",$_SESSION);
-
+    $template->assign("SESSION",$_SESSION);
     database::initDB(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
 }
 
