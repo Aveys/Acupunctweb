@@ -18,6 +18,15 @@ function createUser($login, $password, $name, $mail)
 
 }
 
+function getUser($login)
+{
+
+}
+
+function connectUser($login, $password, $mail)
+{
+
+}
 
 
 ?>
