@@ -11,3 +11,7 @@ Dossier de conception pour le project acupunctweb
 
 
 Guide d'accesibilité ARIA pour le JS
+
+## Variables template
+* loginConnection: invalid/connected/disconnected
+* user: string

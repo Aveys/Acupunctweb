@@ -6,18 +6,21 @@
  * Time: 09:21
  */
 
-function initDB($host, $name, $user, $pwd)
+class database
 {
-    try{
-        global $pdo;
-        $pdo = new PDO('mysql:host=' . $host . ';dbname=' . $name, $user, $pwd);
-        $pdo->beginTransaction();
-    }
-    catch(Exception $e) {
-        echo $e->getMessage() . "<br/>";
-        echo $e->getCode();
-    }
+    static $pdo;
+    public function initDB($host, $name, $user, $pwd)
+    {
+        try {
+            global $pdo;
+            $pdo = new PDO('mysql:host=' . $host . ';dbname=' . $name, $user, $pwd);
+            $pdo->beginTransaction();
+        } catch (Exception $e) {
+            echo $e->getMessage() . "<br/>";
+            echo $e->getCode();
+        }
 
+    }
 }
 
 ?>
