@@ -17,10 +17,10 @@ function initAll()
     database::initDB(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
 }
 
-function user_connect()
+/*function user_connect($login, $pwd)
 {
 
-}
+}*/
 
 function user_disconnect()
 {
