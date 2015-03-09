@@ -1,0 +1,40 @@
+{include="header"}
+<form class="form-horizontal" method="post" action="lib/control/action.php?action=signup">
+    <div class="alert alert-danger" role="alert">
+        Adresse E-mail déjà existante.
+    </div>
+    <div class="alert alert-danger" role="alert">
+        Erreur lors de la création du compte, vérifiez les données entrées.
+    </div>
+    <div class="form-group">
+        <label for="inputFirstname" class="col-sm-3 control-label">Prénom</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputLastname" class="col-sm-3 control-label">Nom</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputLastname" placeholder="Nom">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputEmail" class="col-sm-3 control-label">E-Mail</label>
+        <div class="col-sm-9">
+            <input type="email" class="form-control" id="inputEmail" placeholder="E-Mail">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-3 control-label">Mot de passe</label>
+        <div class="col-sm-9">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-9">
+            <button type="submit" class="btn btn-default">Créer le compte</button>
+        </div>
+    </div>
+</form>
+{include="footer"}

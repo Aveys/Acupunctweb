@@ -37,7 +37,7 @@ if(isset($_GET['page']))
             $template->draw('about');
             break;
         case "signup":
-            $template->draw('signup');
+            $template->draw('signup_user');
             break;
         default:
             $template->draw('index');
