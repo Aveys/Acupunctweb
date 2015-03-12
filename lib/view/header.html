@@ -11,10 +11,26 @@
 <div class="blog-masthead">
     <div class="container">
         <nav class="blog-nav">
+            {if="$activepage=='index'"}
             <a class="blog-nav-item active" href="Acupunctweb/?page=home">Accueil</a>
+            {else}
+            <a class="blog-nav-item" href="Acupunctweb/?page=home">Accueil</a>
+            {/if}
+            {if="$activepage=='patho'"}
+            <a class="blog-nav-item active" href="Acupunctweb/?page=patho">Consulter</a>
+            {else}
             <a class="blog-nav-item" href="Acupunctweb/?page=patho">Consulter</a>
+            {/if}
+            {if="$activepage=='search'"}
+            <a class="blog-nav-item active" href="Acupunctweb/?page=search">Rechercher</a>
+            {else}
             <a class="blog-nav-item" href="Acupunctweb/?page=search">Rechercher</a>
+            {/if}
+            {if="$activepage=='about'"}
+            <a class="blog-nav-item active" href="Acupunctweb/?page=about">A propos</a>
+            {else}
             <a class="blog-nav-item" href="Acupunctweb/?page=about">A propos</a>
+            {/if}
         </nav>
     </div>
 </div>

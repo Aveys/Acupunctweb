@@ -25,25 +25,32 @@ if(isset($_GET['page']))
     switch($_GET['page'])
     {
         case "home":
+            $template->assign("activepage","index");
             $template->draw('index');
             break;
         case "patho":
+            $template->assign("activepage","patho");
             $template->draw('patho');
             break;
         case "search":
+            $template->assign("activepage","search");
             $template->draw('search');
             break;
         case "about":
+            $template->assign("activepage","about");
             $template->draw('about');
             break;
         case "signup":
+            $template->assign("activepage","signup");
             $template->draw('signup');
             break;
         default:
+            $template->assign("activepage","index");
             $template->draw('index');
             break;
     }
 }else{
+    $template->assign("activepage","index");
     $template->draw('index');
 }
 
