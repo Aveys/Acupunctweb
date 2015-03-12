@@ -30,6 +30,7 @@ if(isset($_GET['page']))
             break;
         case "patho":
             $template->assign("activepage","patho");
+
             $template->draw('patho');
             break;
         case "search":

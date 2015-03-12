@@ -24,7 +24,6 @@ function createUser($login, $password, $name, $mail)
 function getUser($login)
 {
     $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
-    $result = false;
     $sql_prepared = $db->pdo->prepare("SELECT name FROM users WHERE login=?");
     $sql_prepared->execute(array($login));
     $sql_result =  $sql_prepared->fetchColumn();
@@ -40,7 +39,6 @@ function getUser($login)
 function user_connect($login, $password)
 {
     $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
-    $result = false;
     $sql_prepared = $db->pdo->prepare("SELECT login FROM users WHERE login=? AND password=?");
     $sql_prepared->execute(array($login,$password));
     $sql_result =  $sql_prepared->fetchColumn();

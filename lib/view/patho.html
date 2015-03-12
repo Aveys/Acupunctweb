@@ -1,4 +1,12 @@
 {include="header"}
-
+<div id="criteres">
+    <table>
+        {loop="$listepatho"}
+        <tr>
+        <td>{$key}, {$value}</td>
+        </tr>
+        {/loop}
+    </table>
+</div>
 {include="sidebar"}
 {include="footer"}

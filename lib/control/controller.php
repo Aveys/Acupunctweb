@@ -8,6 +8,7 @@
 
 require_once 'lib/model/db.php';
 require_once 'lib/model/user.php';
+require_once 'lib/model/pathologie.php';
 
 function initAll()
 {
@@ -38,7 +39,10 @@ function user_disconnect()
     $template->assign('user', 'NULL');
     $template->assign('loginConnection', 'disconnected');
 }
-
+function getListPathologie(){
+    $listpatho = getPathologie();
+    var_dump($listpatho);
+}
 
 
 ?>
