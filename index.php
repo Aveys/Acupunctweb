@@ -42,7 +42,7 @@ if(isset($_GET['page']))
             break;
         case "signup":
             $template->assign("activepage","signup");
-            $template->draw('signup');
+            $template->draw('signup_user');
             break;
         default:
             $template->assign("activepage","index");

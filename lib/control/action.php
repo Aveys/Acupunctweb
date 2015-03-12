@@ -13,24 +13,52 @@ session_start();
 
 global $template;
 
-if(isset($_POST['login']) && isset($_POST['pwd']))
+if(isset($_GET['action']))
 {
-    if(preg_match("#[a-zA-Z0-9]#",$_POST['login']) && preg_match("#[a-zA-Z0-9]#",$_POST['pwd']))
+    switch($_GET['action'])
     {
-        if(user_connect($_POST['login'],$_POST['pwd']) == true)
-        {
-            $_SESSION['loginConnection'] = 'connected';
-            $_SESSION['user'] = $_POST['login'];
-            $_SESSION['userName'] = getUser($_POST['login']);
-        }else{
-            $_SESSION['loginConnection'] = 'invalidLogin';
-        }
-    }else {
-        $_SESSION['loginConnection'] = 'invalidInput';
+        case 'connect':
+            connect();
+            break;
+
+        case 'signup':
+            signup();
+            break;
+
+        default:
+            header('Location: /index.php');
+            break;
     }
 }else{
-    $_SESSION['loginConnection'] = 'invalidInput';
+    header('Location: /index.php');
 }
-header('Location: /index.php');
+
+function connect()
+{
+    if(isset($_POST['login']) && isset($_POST['pwd']))
+    {
+        if(preg_match("#[a-zA-Z0-9]#",$_POST['login']) && preg_match("#[a-zA-Z0-9]#",$_POST['pwd']))
+        {
+            if(user_connect($_POST['login'],$_POST['pwd']) == true)
+            {
+                $_SESSION['loginConnection'] = 'connected';
+                $_SESSION['user'] = $_POST['login'];
+                $_SESSION['userName'] = getUser($_POST['login']);
+            }else{
+                $_SESSION['loginConnection'] = 'invalidLogin';
+            }
+        }else {
+            $_SESSION['loginConnection'] = 'invalidInput';
+        }
+    }else{
+        $_SESSION['loginConnection'] = 'invalidInput';
+    }
+    header('Location: /index.php');
+}
+
+function signup()
+{
+
+}
 
 ?>
