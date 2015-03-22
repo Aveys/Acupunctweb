@@ -5,8 +5,8 @@
  * Date: 26/02/15
  * Time: 08:41
  */
-//error_reporting(E_ALL | E_STRICT);
-//ini_set('display_errors', true);
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', true);
 include 'inc/rain.tpl.class.php';
 require_once 'lib/control/controller.php';
 require_once 'config.php';
@@ -30,12 +30,16 @@ if(isset($_GET['page']))
             break;
         case "patho":
             $template->assign("activepage","patho");
-
-            $template->draw('patho');
+            $result=getListSymptByPath();
+            $template->assign("listePatho",$result);
+            $html = $template->draw('patho',$return_string = true );
+            echo $html;
             break;
         case "search":
             $template->assign("activepage","search");
-            $template->draw('search');
+            $result
+            $html=$template->draw('search',$return_string = true);
+            echo $html;
             break;
         case "about":
             $template->assign("activepage","about");

@@ -12,7 +12,7 @@ class Database
     public function __construct($host, $name, $user, $pwd)
     {
         try {
-            $this->pdo = new PDO('mysql:host=' . $host . ';dbname=' . $name, $user, $pwd);
+            $this->pdo = new PDO('mysql:host=' . $host . ';dbname=' . $name.';charset=utf8', $user, $pwd);
             $this->pdo->beginTransaction();
         } catch (Exception $e) {
             echo $e->getMessage() . "<br/>";

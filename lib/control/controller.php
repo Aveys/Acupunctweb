@@ -41,7 +41,28 @@ function user_disconnect()
 }
 function getListPathologie(){
     $listpatho = getPathologie();
-    var_dump($listpatho);
+    $prettyTable=array();
+    foreach ($listpatho as $value) {
+
+        foreach ($value as $key=>$val) {
+            if($key === "desc"){
+                $prettyTable[]=$val;
+            }
+        }
+
+    }
+    return $prettyTable;
+}
+function getListSymptByPath(){
+    $listpatho = getSymptByPath();
+    //var_dump($listpatho);
+    $prettyTable=array();
+    foreach ($listpatho as $value) {
+        $prettyTable[$value["Pathologie"]]=$value["Symptomes"];
+    }
+    //var_dump($prettyTable);
+    //return $listpatho;
+    return $prettyTable;
 }
 
 

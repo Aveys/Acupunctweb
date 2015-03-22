@@ -13,7 +13,7 @@
  * @param string $mail E-Mail address of new created user
  * @return boolean Creation acknowledge
  */
-include('../../config.php');
+include_once('config.php');
 require_once('db.php');
 
 function createUser($login, $password, $name, $mail)
