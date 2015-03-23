@@ -26,6 +26,5 @@ XSD
 
 XSL
 ----------
-=> transformation d'un document XML en tout ce que l'on veut
-Langage en XML
-c'est une techno rare car on ne le voit pas
+*transformation d'un document XML en tout ce que l'on veut*
+c'est un langage en XML et une techno rare car on ne le voit pas
