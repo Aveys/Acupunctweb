@@ -32,7 +32,8 @@ if(isset($_GET['action']))
             header('Location: /index.php');
             disconnect();
             break;
-
+        case search :
+            search();
         default:
             header('Location: /index.php');
             break;

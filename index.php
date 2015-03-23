@@ -37,6 +37,8 @@ if(isset($_GET['page']))
             break;
         case "search":
             $template->assign("activepage","search");
+            $listMeridien=getListMeridien();
+            $template->assign("listMeridien",$listMeridien);
             $html=$template->draw('search',$return_string = true);
             echo $html;
             break;

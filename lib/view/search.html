@@ -1,4 +1,13 @@
 {include="header"}
-<p> ceci est la page de recherche !!</p>
+<form class="form-inline">
+    <div class="form-group">
+        <label for="SELMeridien">Méridien :</label>
+        <select id="SELMeridien" class="form-control">
+            {loop="$listMeridien"}
+            <option>{$value}</option>
+            {/loop}
+        </select>
+    </div>
+</form>
 {include="sidebar"}
 {include="footer"}

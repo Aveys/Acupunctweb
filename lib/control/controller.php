@@ -9,6 +9,7 @@
 require_once 'lib/model/db.php';
 require_once 'lib/model/user.php';
 require_once 'lib/model/pathologie.php';
+require_once 'lib/model/search.php';
 
 function initAll()
 {
@@ -69,6 +70,16 @@ function getListSymptByPath(){
     //return $listpatho;
     return $prettyTable;
 }
-
+function getListMeridien(){
+    $listMer = getMeridien();
+    //var_dump($listpatho);
+    $prettyTable=array();
+    foreach ($listMer as $value) {
+        $prettyTable[]=$value["Nom"];
+    }
+    //var_dump($prettyTable);
+    //return $listpatho;
+    return $prettyTable;
+}
 
 ?>
