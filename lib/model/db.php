@@ -13,7 +13,8 @@ class Database
     {
         try {
             $this->pdo = new PDO('mysql:host=' . $host . ';dbname=' . $name.';charset=utf8', $user, $pwd);
-            $this->pdo->beginTransaction();
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //$this->pdo->beginTransaction();
         } catch (Exception $e) {
             echo $e->getMessage() . "<br/>";
             echo $e->getCode();

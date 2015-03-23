@@ -23,7 +23,12 @@ function initAll()
     {
         $template->assign('loginConnection', 'disconnected');
     }
-    unset($_SESSION['loginConnection']);
+    if(!isset($_SESSION['loginSignup']))
+    {
+        $template->assign('loginSignup', '');
+    }
+
+    unset($_SESSION['loginSignup']);
     $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
     //$db->initDB(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
 }

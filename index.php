@@ -37,7 +37,6 @@ if(isset($_GET['page']))
             break;
         case "search":
             $template->assign("activepage","search");
-            $result
             $html=$template->draw('search',$return_string = true);
             echo $html;
             break;

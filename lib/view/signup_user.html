@@ -1,40 +1,62 @@
 {include="header"}
+{if="$loginSignup=='signedUp'"}
+<div class="alert alert-success" role="alert">
+    Votre compte a été créé avec succès, veuillez maintenant vous connecter.
+</div>
+{else}
 <form class="form-horizontal" method="post" action="lib/control/action.php?action=signup">
+    {if="$loginSignup=='invalidEmail'"}
     <div class="alert alert-danger" role="alert">
-        Adresse E-mail déjà existante.
+        Adresse E-mail ou nom d'utilisateur déjà existant.
     </div>
+    {/if}
+    {if="$loginSignup=='invalidInput'"}
     <div class="alert alert-danger" role="alert">
         Erreur lors de la création du compte, vérifiez les données entrées.
     </div>
+    {/if}
     <div class="form-group">
-        <label for="inputFirstname" class="col-sm-3 control-label">Prénom</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom">
+        <label for="inputUsername" class="col-sm-5 control-label">Nom d'utilisateur</label>
+        <div class="col-sm-7">
+            <input name="inputUsername" type="text" class="form-control" id="inputUsername" placeholder="Nom d'utilisateur">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputLastname" class="col-sm-3 control-label">Nom</label>
-        <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputLastname" placeholder="Nom">
+        <label for="inputFirstname" class="col-sm-5 control-label">Prénom</label>
+        <div class="col-sm-7">
+            <input name="inputFirstname" type="text" class="form-control" id="inputFirstname" placeholder="Prénom">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputEmail" class="col-sm-3 control-label">E-Mail</label>
-        <div class="col-sm-9">
-            <input type="email" class="form-control" id="inputEmail" placeholder="E-Mail">
+        <label for="inputLastname" class="col-sm-5 control-label">Nom</label>
+        <div class="col-sm-7">
+            <input name="inputLastname" type="text" class="form-control" id="inputLastname" placeholder="Nom">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword" class="col-sm-3 control-label">Mot de passe</label>
-        <div class="col-sm-9">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe">
+        <label for="inputEmail" class="col-sm-5 control-label">E-Mail</label>
+        <div class="col-sm-7">
+            <input name="inputEmail" type="email" class="form-control" id="inputEmail" placeholder="E-Mail">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" class="col-sm-5 control-label">Mot de passe</label>
+        <div class="col-sm-7">
+            <input name="inputPassword" type="password" class="form-control" id="inputPassword" placeholder="Mot de passe">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword2" class="col-sm-5 control-label">Répetez le mot de passe</label>
+        <div class="col-sm-7">
+            <input name="inputPassword2" type="password" class="form-control" id="inputPassword2" placeholder="Mot de passe">
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-9">
+        <div class="col-sm-offset-2 col-sm-7">
             <button type="submit" class="btn btn-default">Créer le compte</button>
         </div>
     </div>
 </form>
+{/if}
 {include="footer"}
