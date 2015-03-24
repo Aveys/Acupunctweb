@@ -1,14 +1,21 @@
 {include="header"}
 <div id="criteres">
     <table id="tableDeDonnees" class="table table-bordered">
+        <caption>Tableaux des symptômes par pathologie</caption>
         <tr>
             <th>Pathologie</th>
-            <th>Symptome</th>
+            <th>Symptomes</th>
         </tr>
         {loop="$listePatho"}
             <tr>
-                <td>{$key}</td>
-                <td>{$value}</td>
+                <td>{$value.NOM}</td>
+                <td>
+                    <ul>
+                        {loop="value.SYMPT"}
+                        <li>{$value}</li>
+                        {/loop}
+                    </ul>
+                </td>
             </tr>
         {/loop}
     </table>

@@ -30,7 +30,7 @@ if(isset($_GET['page']))
             break;
         case "patho":
             $template->assign("activepage","patho");
-            $result=getListSymptByPath();
+            $result=getListSymptByPatho();
             $template->assign("listePatho",$result);
             $html = $template->draw('patho',$return_string = true );
             echo $html;
