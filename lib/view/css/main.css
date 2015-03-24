@@ -166,3 +166,9 @@ h6, .h6 {
 .blog-footer p:last-child {
     margin-bottom: 0;
 }
+
+.searchFormKeywordsDiv {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
