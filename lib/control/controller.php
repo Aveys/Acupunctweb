@@ -16,6 +16,7 @@ function initAll()
     global $template;
     global $db;
 
+
     foreach($_SESSION as $key => $value)
     {
         $template->assign($key, $value);
@@ -23,6 +24,11 @@ function initAll()
     if(!isset($_SESSION['loginConnection']))
     {
         $template->assign('loginConnection', 'disconnected');
+    }else{
+        if($_SESSION['loginConnection'] != 'connected')
+        {
+            unset($_SESSION['loginConnection']);
+        }
     }
     if(!isset($_SESSION['loginSignup']))
     {
@@ -80,6 +86,17 @@ function getListMeridien(){
     //var_dump($prettyTable);
     //return $listpatho;
     return $prettyTable;
+}
+
+function getSearchFilters()
+{
+    global $template;
+    if(isset($_POST['filters']))
+    {
+        $template->assign('filters', $_POST['filters']);
+    }else{
+        $template->assign('filters', 'null');
+    }
 }
 
 ?>

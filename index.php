@@ -36,6 +36,7 @@ if(isset($_GET['page']))
             echo $html;
             break;
         case "search":
+            getSearchFilters();
             $template->assign("activepage","search");
             $listMeridien=getListMeridien();
             $template->assign("listMeridien",$listMeridien);

@@ -1,13 +1,93 @@
 {include="header"}
-<form class="form-inline">
-    <div class="form-group">
-        <label for="SELMeridien">Méridien :</label>
-        <select id="SELMeridien" class="form-control">
-            {loop="$listMeridien"}
-            <option>{$value}</option>
-            {/loop}
-        </select>
+{if="$loginConnection=='connected'"}
+<h2>Recherche de pathologie</h2><br/>
+<form class="form-inline" method="post" action="index.php?page=search">
+    <div class="form-group" id="searchForm">
+        <!--<label for="SELSympt">Symptome :</label>
+        <select id="SELSympt" class="form-control">
+
+        </select>-->
+        <div class="searchFormKeywordsDiv">
+            <h3>Mots-clés de symptomes</h3><div class="input-group">
+            <input type="text" class="form-control" placeholder="Symptome..." id="filterSearchInput" name="inputTextSearch">
+            <span class="input-group-btn" id="span_buttons_search">
+                <button class="btn btn-default" type="submit" id="buttonSearchFormSubmit" >Rechercher</button>
+            </span>
+        </div><!-- /input-group -->
+            <div id="filtersSearchForm">
+                {if="$filters=='null'"}
+                {else}
+                    {loop="$filters"}
+                        <button value="{$value}" onclick='deleteFilter("{$value}")' id="fltr:{$value}" class="btn btn-default btn-sm" type="button"><span class="glyphicon glyphicon-remove"></span> {$value}</button>
+                        <input type="hidden" name="filters[]" value="{$value}" id="fltrField:{$value}"/>
+                {/loop}
+                {/if}
+            </div>
+        </div>
+        <br/>
     </div>
+    <script>
+        //TODO: Move JS to external file.
+        var buttonSearchForm = document.createElement("buttonSearchForm");
+        buttonSearchForm.textContent = "Ajouter";
+        buttonSearchForm.setAttribute('class', 'btn btn-default');
+        buttonSearchForm.setAttribute('type', 'button');
+        buttonSearchForm.setAttribute('id', 'buttonSearchForm');
+        buttonSearchForm.setAttribute('onclick', 'addFilter()');
+
+        var spanButtonsSearch = document.getElementById("span_buttons_search");
+        spanButtonsSearch.insertBefore(buttonSearchForm, spanButtonsSearch.children[0]);
+
+
+
+        function addFilter()
+        {
+            var text = document.getElementById("filterSearchInput").value;
+            var newHiddenField = document.createElement("input");
+            newHiddenField.setAttribute('name', 'filters[]');
+            newHiddenField.setAttribute('id', "fltrField:" + text);
+            newHiddenField.setAttribute('type', 'hidden');
+            newHiddenField.value = text;
+
+            var newButton = document.createElement("button");
+            newButton.setAttribute('type', 'button');
+            newButton.setAttribute('class', 'btn btn-default btn-sm');
+            newButton.setAttribute('id', "fltr:" + text);
+            newButton.setAttribute('onClick', 'deleteFilter(\"'+ text + '\")');
+            newButton.setAttribute('value', text);
+
+            var glyphIcn = document.createElement("span");
+            glyphIcn.setAttribute('class', 'glyphicon glyphicon-remove');
+
+            newButton.appendChild(glyphIcn);
+
+            var textnode = document.createTextNode(" " + text);
+            newButton.appendChild(textnode);
+
+
+            var searchForm = document.getElementById("filtersSearchForm");
+            searchForm.appendChild(newHiddenField);
+            searchForm.appendChild(newButton);
+
+        }
+
+        function deleteFilter(filter)
+        {
+            var searchForm = document.getElementById("filtersSearchForm");
+            var filterBtn = document.getElementById("fltr:" + filter);
+            var filterFld = document.getElementById("fltrField:" + filter);
+            filterFld.parentNode.removeChild(filterFld);
+            filterBtn.parentNode.removeChild(filterBtn);
+        }
+    </script>
 </form>
+<h3>Résultats de la recherche</h3>
+{else}
+<div class="alert alert-warning" role="alert">
+    Veuillez vous identifier pour accéder à cette section.
+    <br/>
+    Si vous ne possédez pas de compte, <a href="/index.php?page=signup">créez un nouveau compte</a>.
+</div>
+{/if}
 {include="sidebar"}
 {include="footer"}

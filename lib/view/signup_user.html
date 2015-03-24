@@ -4,6 +4,8 @@
     Votre compte a été créé avec succès, veuillez maintenant vous connecter.
 </div>
 {else}
+<h2>Création d'un nouveau compte</h2>
+<br/>
 <form class="form-horizontal" method="post" action="lib/control/action.php?action=signup">
     {if="$loginSignup=='invalidEmail'"}
     <div class="alert alert-danger" role="alert">
@@ -53,7 +55,7 @@
     </div>
 
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-7">
+        <div class="col-sm-offset-9 col-sm-7">
             <button type="submit" class="btn btn-default">Créer le compte</button>
         </div>
     </div>
