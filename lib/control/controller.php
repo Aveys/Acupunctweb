@@ -52,7 +52,7 @@ function user_disconnect()
     $template->assign('loginConnection', 'disconnected');
 }
 function getListPathologie(){
-    $listpatho = getPathologie();
+    $listpatho = array();
     $prettyTable=array();
     foreach ($listpatho as $value) {
 

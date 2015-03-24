@@ -1,5 +1,5 @@
 Format XML
-=========
+===========
 XML est valide dans la forme = abc jop hup est valide en français (bonne lettres).
 c'est le langage qui donne ça mais ca veut rien dire : la forme n'est pas valide.
 La forme doit respecter un modéle.
@@ -25,7 +25,31 @@ XSD
 * toujurs faire Dn seul element racine de type XXXX, ensuite faire des types complexes
 
 XSL
-----------
-=> transformation d'un document XML en tout ce que l'on veut
-Langage en XML
-c'est une techno rare car on ne le voit pas
+===========
+*transformation d'un document XML en tout ce que l'on veut*
+c'est un langage en XML et une techno rare car on ne le voit pas
+XSL est pertinent chaque fois qu'on a besoin de transformer un fichier XML et pour représenter des données
+
+
+Selecteurs
+-------------
+Ne pas oublier le selecteur Self pour XPATH
+
+Instructions
+----------------
+Un template match n'est evalué qu'au début ou quand on le demande explicitement
+Les variables ne sont pas modifiable en  XSL
+
+
+
+ecrire du texte 
+* Ecriture directe sauf si 
+* Tag dans le langage cible
+* <xsl:texte> </xsl:text>
+* valueof select="..." -> chaine de caractére (TOUJOURS)
+* copy-of select="noeud" -> fragment (noeud+ascendant) (bloc de code)
+* <copy>    </copy>
+
+XSL2
+
+as="" -> typage , ? -> ce type ou rien

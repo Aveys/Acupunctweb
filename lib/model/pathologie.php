@@ -7,25 +7,17 @@
  */
 include_once('config.php');
 require_once('db.php');
-
-function getPathologie(){
-    $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
-    $query = 'SELECT patho.desc FROM patho;';
-    $stmt = $db->pdo->query($query);
-    $arrAll = $stmt->fetchAll();
-    return $arrAll;
-}
-function getSymptomes(){
-    $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
-    $query = 'select DISTINCT symptome.`desc` from symptome;';
-    $stmt = $db->pdo->query($query);
-    $arrAll = $stmt->fetchAll();
-    return $arrAll;
-}
-function getSymptByPath(){
-    $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
-    $query = 'select p.`desc` as "Pathologie",s.`desc` as "Symptomes" from symptome s, symptPatho sp, patho p where s.idS=sp.idS and sp.idP=p.idP order by Symptomes;';
-    $stmt = $db->pdo->query($query);
-    $arrAll = $stmt->fetchAll();
-    return $arrAll;
+class Pathologie
+{
+    var $symptomes;
+    function Pathologie($id){
+        $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
+        $query=$db->pdo->prepare("select s.desc from symptPatho sp, symptome s where sp.idP=:id and sp.idS=s.idS;");
+        if ($query->execute($id)) {
+            while ($row = $query->fetch()) {
+                print_r($row);
+            }
+        }
+        
+    }
 }
