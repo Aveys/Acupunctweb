@@ -51,30 +51,19 @@ function user_disconnect()
     $template->assign('user', 'NULL');
     $template->assign('loginConnection', 'disconnected');
 }
-function getListPathologie(){
+function getListSymptByPatho(){
     $listpatho = array();
-    $prettyTable=array();
-    foreach ($listpatho as $value) {
-
-        foreach ($value as $key=>$val) {
-            if($key === "desc"){
-                $prettyTable[]=$val;
-            }
-        }
-
+    $listfin=array();
+    $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
+    $temp = $db->pdo->query("Select p.idP from patho p");
+    $result = $temp->fetchAll();
+    foreach ($result as $value) {
+        $listpatho[]= new Pathologie($value['idP']);
     }
-    return $prettyTable;
-}
-function getListSymptByPath(){
-    $listpatho = getSymptByPath();
-    //var_dump($listpatho);
-    $prettyTable=array();
-    foreach ($listpatho as $value) {
-        $prettyTable[$value["Pathologie"]]=$value["Symptomes"];
+    foreach($listpatho as $val){
+        $listfin[]=array("NOM" => $val->getNom(),"SYMPT" => $val->getSympt());
     }
-    //var_dump($prettyTable);
-    //return $listpatho;
-    return $prettyTable;
+    return $listfin;
 }
 function getListMeridien(){
     $listMer = getMeridien();
