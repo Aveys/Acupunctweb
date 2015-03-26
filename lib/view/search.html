@@ -1,15 +1,15 @@
 {include="header"}
 {if="$loginConnection=='connected'"}
-<h2>Recherche de pathologie</h2><br/>
+<h2>Recherche de pathologies</h2><br/>
 <form class="form-inline" method="post" action="index.php?page=search">
     <div class="form-group" id="searchForm">
         <!--<label for="SELSympt">Symptome :</label>
         <select id="SELSympt" class="form-control">
 
         </select>-->
-        <div class="searchFormKeywordsDiv">
+        <div class="searchFormKeywordsDiv" id="searchFormKeywordDiv">
             <h3>Mots-clés de symptomes</h3><div class="input-group">
-            <input type="text" class="form-control" placeholder="Symptome..." id="filterSearchInput" name="inputTextSearch">
+            <input type="text" class="form-control typeahead" placeholder="Symptome..." id="filterSearchInput" name="inputTextSearch">
             <span class="input-group-btn" id="span_buttons_search">
                 <button class="btn btn-default" type="submit" id="buttonSearchFormSubmit" >Rechercher</button>
             </span>
@@ -26,60 +26,7 @@
         </div>
         <br/>
     </div>
-    <script>
-        //TODO: Move JS to external file.
-        var buttonSearchForm = document.createElement("buttonSearchForm");
-        buttonSearchForm.textContent = "Ajouter";
-        buttonSearchForm.setAttribute('class', 'btn btn-default');
-        buttonSearchForm.setAttribute('type', 'button');
-        buttonSearchForm.setAttribute('id', 'buttonSearchForm');
-        buttonSearchForm.setAttribute('onclick', 'addFilter()');
 
-        var spanButtonsSearch = document.getElementById("span_buttons_search");
-        spanButtonsSearch.insertBefore(buttonSearchForm, spanButtonsSearch.children[0]);
-
-
-
-        function addFilter()
-        {
-            var text = document.getElementById("filterSearchInput").value;
-            var newHiddenField = document.createElement("input");
-            newHiddenField.setAttribute('name', 'filters[]');
-            newHiddenField.setAttribute('id', "fltrField:" + text);
-            newHiddenField.setAttribute('type', 'hidden');
-            newHiddenField.value = text;
-
-            var newButton = document.createElement("button");
-            newButton.setAttribute('type', 'button');
-            newButton.setAttribute('class', 'btn btn-default btn-sm');
-            newButton.setAttribute('id', "fltr:" + text);
-            newButton.setAttribute('onClick', 'deleteFilter(\"'+ text + '\")');
-            newButton.setAttribute('value', text);
-
-            var glyphIcn = document.createElement("span");
-            glyphIcn.setAttribute('class', 'glyphicon glyphicon-remove');
-
-            newButton.appendChild(glyphIcn);
-
-            var textnode = document.createTextNode(" " + text);
-            newButton.appendChild(textnode);
-
-
-            var searchForm = document.getElementById("filtersSearchForm");
-            searchForm.appendChild(newHiddenField);
-            searchForm.appendChild(newButton);
-
-        }
-
-        function deleteFilter(filter)
-        {
-            var searchForm = document.getElementById("filtersSearchForm");
-            var filterBtn = document.getElementById("fltr:" + filter);
-            var filterFld = document.getElementById("fltrField:" + filter);
-            filterFld.parentNode.removeChild(filterFld);
-            filterBtn.parentNode.removeChild(filterBtn);
-        }
-    </script>
 </form>
 <h3>Résultats de la recherche</h3>
 {else}
@@ -91,3 +38,52 @@
 {/if}
 {include="sidebar"}
 {include="footer"}
+<script>initJS_search();</script>
+<script>
+    var substringMatcher = function(strs) {
+        return function findMatches(q, cb) {
+            var matches, substrRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function(i, str) {
+                if (substrRegex.test(str)) {
+                    // the typeahead jQuery plugin expects suggestions to a
+                    // JavaScript object, refer to typeahead docs for more info
+                    matches.push({ value: str });
+                }
+            });
+
+            cb(matches);
+        };
+    };
+
+    var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+        'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+        'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+        'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+        'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+        'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+        'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+        'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+        'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+    ];
+
+    $('#searchFormKeywordDiv .typeahead').typeahead({
+
+                hint: true,
+                highlight: true,
+                minLength: 1
+            },
+            {
+                name: 'states',
+                displayKey: 'value',
+                source: substringMatcher(states)
+            });
+</script>
