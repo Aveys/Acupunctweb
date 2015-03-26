@@ -86,6 +86,26 @@ function getSearchFilters()
     }else{
         $template->assign('filters', 'null');
     }
+
+    $filterList = array();
+
+    $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
+    $temp = $db->pdo->query("Select name from keywords");
+    $result = $temp->fetchAll();
+
+    if($temp->rowCount() > 0)
+    {
+        foreach ($result as $val)
+        {
+            $filterList[] = $val['name'];
+        }
+        $template->assign('filtersList', $filterList);
+    }else{
+        $template->assign('filtersList', 'null');
+    }
+
+
+
 }
 
 ?>
