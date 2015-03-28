@@ -30,8 +30,9 @@ if(isset($_GET['page']))
         case "patho":
             $template->assign("activepage","patho");
             if(isset($_GET["Meridien"]) && isset($_GET["Type"])){
-
                 $result=getListSymptByPathoFiltred(htmlspecialchars($_GET["Meridien"]),htmlspecialchars($_GET["Type"]));
+                $template->assign("oldMer",$_GET["Meridien"]);
+                $template->assign("oldType",$_GET["Type"]);
                 unset($_GET["Meridien"]);
                 unset($_GET["Type"]);
             }

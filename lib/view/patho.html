@@ -8,7 +8,11 @@
             <select name="Meridien" class="form-control" id="MeridienSelect">
                 <option>Tous</option>
                 {loop="listeMeridien"}
-                <option>{$value}</option>
+                    {if="$value==$oldMer"}
+                        <option selected="selected">{$value}</option>
+                    {else}
+                        <option>{$value}</option>
+                    {/if}
                 {/loop}
             </select>
         </div>
@@ -17,7 +21,11 @@
             <select name="Type" class="form-control" id="TypeSelect">
                 <option>Toutes</option>
                 {loop="listeType"}
-                <option>{$value}</option>
+                    {if="$value==$oldType"}
+                        <option selected="selected">{$value}</option>
+                    {else}
+                        <option>{$value}</option>
+                    {/if}
                 {/loop}
             </select>
         </div>
