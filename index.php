@@ -19,7 +19,6 @@ raintpl::configure("base_url", null);
 raintpl::configure("tpl_dir", "lib/view/");
 
 initAll();
-
 if(isset($_GET['page']))
 {
     switch($_GET['page'])
@@ -30,8 +29,20 @@ if(isset($_GET['page']))
             break;
         case "patho":
             $template->assign("activepage","patho");
-            $result=getListSymptByPatho();
+            if(isset($_GET["Meridien"]) && isset($_GET["Type"])){
+
+                $result=getListSymptByPathoFiltred(htmlspecialchars($_GET["Meridien"]),htmlspecialchars($_GET["Type"]));
+                unset($_GET["Meridien"]);
+                unset($_GET["Type"]);
+            }
+            else{
+                $result=getListSymptByPatho();
+            }
+            $listMer = getListMeridien();
+            $listType = getListType();
             $template->assign("listePatho",$result);
+            $template->assign("listeMeridien",$listMer);
+            $template->assign("listeType",$listType);
             $html = $template->draw('patho',$return_string = true );
             echo $html;
             break;
@@ -56,7 +67,8 @@ if(isset($_GET['page']))
             $template->draw('index');
             break;
     }
-}else{
+}
+else{
     $template->assign("activepage","index");
     $template->draw('index');
 }

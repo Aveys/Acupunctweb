@@ -2498,9 +2498,8 @@ input[type="search"] {
 }
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0 0;
-  margin-top: 1px \9;
-  line-height: normal;
+    margin: 1px 0 0;
+    line-height: normal;
 }
 input[type="file"] {
   display: block;
@@ -2574,7 +2573,7 @@ textarea.form-control {
 input[type="search"] {
   -webkit-appearance: none;
 }
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
+@media screen{
   input[type="date"],
   input[type="time"],
   input[type="datetime-local"],
@@ -2625,7 +2624,7 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
-  margin-top: 4px \9;
+  margin-top: 4px ;
   margin-left: -20px;
 }
 .radio + .radio,
@@ -2764,7 +2763,6 @@ select[multiple].form-group-lg .form-control {
   height: 34px;
   line-height: 34px;
   text-align: center;
-  pointer-events: none;
 }
 .input-lg + .form-control-feedback {
   width: 46px;
@@ -2974,13 +2972,7 @@ select[multiple].form-group-lg .form-control {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  -ms-touch-action: manipulation;
-      touch-action: manipulation;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -3011,12 +3003,11 @@ select[multiple].form-group-lg .form-control {
 .btn.disabled,
 .btn[disabled],
 fieldset[disabled] .btn {
-  pointer-events: none;
   cursor: not-allowed;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
           box-shadow: none;
-  opacity: .65;
+  opacity: 0.65;
 }
 .btn-default {
   color: #333;
@@ -3474,7 +3465,6 @@ tbody.collapse.in {
   cursor: not-allowed;
   background-color: transparent;
   background-image: none;
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 .open > .dropdown-menu {
   display: block;

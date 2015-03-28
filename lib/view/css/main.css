@@ -134,22 +134,12 @@ h6, .h6 {
     border-radius: 30px;
 }
 
+#criteres{
+    border: solid 1px #9d9d9d;
+    border-radius: 5px;
+    padding: 10px;
+}
 
-/*
- * Blog posts
- */
-
-.blog-post {
-    margin-bottom: 60px;
-}
-.blog-post-title {
-    margin-bottom: 5px;
-    font-size: 40px;
-}
-.blog-post-meta {
-    margin-bottom: 20px;
-    color: #999;
-}
 
 
 /*

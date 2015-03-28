@@ -22,7 +22,7 @@ DTD
 
 XSD
 ------------
-* toujurs faire Dn seul element racine de type XXXX, ensuite faire des types complexes
+* toujurs faire un seul element racine de type XXXX, ensuite faire des types complexes
 
 XSL
 ===========
@@ -38,11 +38,9 @@ Ne pas oublier le selecteur Self pour XPATH
 Instructions
 ----------------
 Un template match n'est evalué qu'au début ou quand on le demande explicitement
-Les variables ne sont pas modifiable en  XSL
+* Les variables ne sont pas modifiable en  XSL
 
-
-
-ecrire du texte 
+Comment écrire du texte 
 * Ecriture directe sauf si 
 * Tag dans le langage cible
 * <xsl:texte> </xsl:text>
@@ -53,3 +51,21 @@ ecrire du texte
 XSL2
 
 as="" -> typage , ? -> ce type ou rien
+
+Les parseurs
+===========
+
+Important : 2 types d'API différents
+
+DOM
+--------
+* Crée un arbre proche du document xml dans la mémoire,
+* Assez lourd en mémoire,
+* trés orienté objet
+* Connaitre le graphique objet DOM
+
+SAX
+------------
+* SAX => Approche evenementielle, 
+* SAX et DOM non compatible, 
+* permet de parser facilement

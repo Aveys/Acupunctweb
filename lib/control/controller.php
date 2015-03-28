@@ -9,7 +9,7 @@
 require_once 'lib/model/db.php';
 require_once 'lib/model/user.php';
 require_once 'lib/model/pathologie.php';
-require_once 'lib/model/search.php';
+require_once 'lib/model/meridien.php';
 
 function initAll()
 {
@@ -67,16 +67,44 @@ function getListSymptByPatho(){
 }
 function getListMeridien(){
     $listMer = getMeridien();
-    //var_dump($listpatho);
     $prettyTable=array();
     foreach ($listMer as $value) {
-        $prettyTable[]=$value["Nom"];
+        $prettyTable[]=$value["NOM"];
     }
-    //var_dump($prettyTable);
-    //return $listpatho;
     return $prettyTable;
 }
-
+function getListType(){
+    $listMer = getTypes();
+    $prettyTable=array();
+    foreach ($listMer as $value) {
+        $prettyTable[]=$value["TYPE"];
+    }
+    return $prettyTable;
+}
+function getListSymptByPathoFiltred($mer,$type){
+    $listpatho = array();
+    $listfin=array();
+    if($mer == "Tous" && $type=="Toutes"){
+        return getListSymptByPatho();
+    }
+    if($mer == "Tous"){
+        $mer = "%";
+    }
+    if($type == "Toutes"){
+        $type="%";
+    }
+    $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
+    if(isset($mer))
+    $temp = $db->pdo->query('Select p.idP from patho p join meridien m on p.mer=m.code where m.nom like "%'.$mer.'" and p.type like "%'.$type.'";');
+    $result = $temp->fetchAll();
+    foreach ($result as $value) {
+        $listpatho[]= new Pathologie($value["idP"]);
+    }
+    foreach($listpatho as $val){
+        $listfin[]=array("NOM" => $val->getNom(),"SYMPT" => $val->getSympt());
+    }
+    return $listfin;
+}
 function getSearchFilters()
 {
     global $template;
@@ -107,5 +135,6 @@ function getSearchFilters()
 
 
 }
+
 
 ?>

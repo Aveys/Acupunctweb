@@ -37,3 +37,11 @@ class Pathologie
         return $this->nom;
     }
 }
+function getTypes(){
+    $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
+    $query=$db->pdo->prepare('select distinct p.type as "TYPE" from patho p');
+    if ($query->execute()) {
+        return $query->fetchAll();
+
+    }
+}
