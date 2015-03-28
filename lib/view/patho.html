@@ -37,13 +37,13 @@
     <table id="tableDeDonnees" class="table table-bordered">
         <caption>Tableaux des symptômes par pathologie</caption>
         <tr>
-            <th>Pathologie</th>
-            <th>Symptomes</th>
+            <th id="p">Pathologie</th>
+            <th id="s">Symptomes</th>
         </tr>
         {loop="$listePatho"}
         <tr>
-            <td>{$value.NOM}</td>
-            <td>
+            <td headers="p">{$value.NOM}</td>
+            <td headers="s">
                 <ul>
                     {loop="value.SYMPT"}
                     <li>{$value}</li>
