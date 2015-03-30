@@ -51,6 +51,8 @@ if(isset($_GET['page']))
             break;
         case "search":
             getSearchFilters();
+            $result = getSearchResults();
+            $template->assign("listePatho",$result);
             $template->assign("activepage","search");
             $listMeridien=getListMeridien();
             $template->assign("listMeridien",$listMeridien);

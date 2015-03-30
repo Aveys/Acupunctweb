@@ -29,6 +29,28 @@
 
 </form>
 <h3>Résultats de la recherche</h3>
+<div id="tabloPatho">
+    <table id="tableDeDonnees" class="table table-bordered">
+        <caption>Tableaux des symptômes par pathologie</caption>
+        <tr>
+            <th id="p">Pathologie</th>
+            <th id="s">Symptomes</th>
+        </tr>
+        {loop="$listePatho"}
+        <tr>
+            <td headers="p">{$value.NOM}</td>
+            <td headers="s">
+                <ul>
+                    {loop="value.SYMPT"}
+                    <li>{$value}</li>
+                    {/loop}
+                </ul>
+            </td>
+        </tr>
+        {/loop}
+    </table>
+</div>
+
 {else}
 <div class="alert alert-warning" role="alert">
     Veuillez vous identifier pour accéder à cette section.
@@ -65,17 +87,7 @@
     };
 
     var filtersList = [{loop="$filtersList"}"{$value}",{/loop}""];
-    //alert("test");
-    /*var filtersList = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-        'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-        'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-        'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-        'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-        'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-        'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-        'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-        'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-    ];*/
+
 
     $('#searchFormKeywordDiv .typeahead').typeahead({
 

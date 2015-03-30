@@ -105,6 +105,41 @@ function getListSymptByPathoFiltred($mer,$type){
     }
     return $listfin;
 }
+
+function getSearchResults()
+{
+    $listpatho = array();
+    $listfin=array();
+    $filter_string = 'REGEXP \'(';
+
+   if(isset($_POST['filters']))
+   {
+       $array = $_POST['filters'];
+       for($i = 0, $size = count($array); $i < $size; $i++)
+       {
+           $filter_string = $filter_string . $array[$i];
+           if($i +1 < $size)
+           {
+               $filter_string = $filter_string . '|';
+           }
+       }
+       $filter_string = $filter_string . ')\'';
+       echo $filter_string;
+
+       $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
+       $temp = $db->pdo->query('Select pat.idP from patho pat, symptome sym, keySympt ks, keywords ke, symptPatho sp where ks.idK = ke.idK AND ks.idS = sym.idS AND sp.idS = sym.ids AND sp.idp = pat.idP AND ke.name ' . $filter_string . ";");
+       $result = $temp->fetchAll();
+       foreach ($result as $value) {
+           $listpatho[]= new Pathologie($value["idP"]);
+       }
+       foreach($listpatho as $val) {
+           $listfin[] = array("NOM" => $val->getNom(), "SYMPT" => $val->getSympt());
+       }
+   }
+    return $listfin;
+
+}
+
 function getSearchFilters()
 {
     global $template;
