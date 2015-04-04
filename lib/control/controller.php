@@ -10,6 +10,7 @@ require_once 'lib/model/db.php';
 require_once 'lib/model/user.php';
 require_once 'lib/model/pathologie.php';
 require_once 'lib/model/meridien.php';
+require_once 'lib/model/articles.php';
 
 function initAll()
 {
@@ -167,8 +168,9 @@ function getSearchFilters()
         $template->assign('filtersList', 'null');
     }
 
-
-
+}
+function getListArticles(){
+    return getArticles();
 }
 
 

@@ -1,12 +1,10 @@
 {include="header"}
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus arcu in tellus rhoncus tincidunt cursus id quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis tempus augue ipsum, auctor faucibus libero lobortis eget. Vivamus ut mauris urna. Mauris viverra lobortis tortor, nec ornare lorem suscipit id. Duis ut massa imperdiet tellus ornare tempor. Etiam commodo elit diam. Maecenas est massa, commodo ac massa at, interdum tristique magna. Praesent nibh ipsum, scelerisque a ultrices eu, cursus at nibh. Ut varius mi eu purus pulvinar efficitur. Phasellus justo quam, rhoncus vel nunc sed, aliquet faucibus lorem. Mauris at mollis elit. Etiam at varius lectus. Nulla quis mi pretium, fermentum sapien id, congue ex.
-</p><p>
-Ut augue nisl, pulvinar non imperdiet et, aliquet eget arcu. Proin ultricies vel diam in tempor. Nulla varius, arcu sed sodales convallis, magna purus gravida odio, ut semper libero est et erat. Nam sollicitudin justo non neque faucibus tempor. Mauris sodales lorem eget nulla ultrices, sed lobortis erat euismod. Curabitur sit amet pretium lorem. Vestibulum eget dolor nulla.
-</p><p>
-Nunc eu enim id odio dapibus hendrerit. Nam eu orci nec ligula tempus ornare non at nisl. Nunc pharetra sed diam vel porta. Phasellus sed libero tincidunt, iaculis neque at, elementum purus. Integer nibh turpis, posuere quis lorem non, molestie tristique velit. Mauris dapibus feugiat tincidunt. Curabitur tristique, odio a venenatis tristique, nibh ipsum blandit sem, ornare hendrerit sapien leo quis ante. Maecenas molestie auctor diam sed convallis. Suspendisse sit amet urna at velit elementum interdum. Pellentesque purus tortor, laoreet at dui sed, tempor tincidunt augue. Sed sit amet metus vitae diam semper ultrices eget sit amet nulla. Nunc bibendum neque at dolor imperdiet, non accumsan sem elementum. Donec dignissim eget ex sit amet auctor. Nullam ut ipsum nec urna auctor tempus.
-</p><p>
-Aenean rhoncus vel ex vitae cursus. Fusce interdum vestibulum erat in luctus. Sed fringilla auctor nisl, nec ultrices est vehicula ut. Cras mollis elit erat, a lobortis odio porta quis. Sed at aliquet dolor, a mattis diam. Fusce tristique, turpis ac efficitur faucibus, metus quam mollis odio, ut luctus lectus leo vel diam. Mauris iaculis ligula non magna efficitur, nec viverra odio tristique. Nunc et mauris dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla congue velit sit amet nisi viverra, non scelerisque massa sagittis. Donec faucibus tortor eu varius porta. Nullam risus ante, egestas vitae nunc at, finibus placerat nibh. Mauris ut pharetra metus. Phasellus id sollicitudin ante. Donec maximus aliquam neque, vel convallis nisl commodo id. Aenean finibus turpis sed nunc tincidunt efficitur.
-</p>
+<div class="blog-post">
+    {loop="$listArticles"}
+    <h2 class="blog-post-title"> {$value.title}</h2>
+    <p class="blog-post-meta">{$value.datePub} par {$value.author}</p>
+    <p class="blog-post-content">{$value.Content}</p>
+    {/loop}
+</div>
 {include="sidebar"}
 {include="footer"}

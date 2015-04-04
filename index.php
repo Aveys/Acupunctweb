@@ -24,8 +24,12 @@ if(isset($_GET['page']))
     switch($_GET['page'])
     {
         case "home":
+            $listArticles= getListArticles();
+            $template->assign("listArticles",$listArticles);
             $template->assign("activepage","index");
-            $template->draw('index');
+            $html=$template->draw('index',$return_string = true);
+            print_r($listArticles);
+            echo $html;
             break;
         case "patho":
             $template->assign("activepage","patho");
