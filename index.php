@@ -28,7 +28,6 @@ if(isset($_GET['page']))
             $template->assign("listArticles",$listArticles);
             $template->assign("activepage","index");
             $html=$template->draw('index',$return_string = true);
-            print_r($listArticles);
             echo $html;
             break;
         case "patho":
