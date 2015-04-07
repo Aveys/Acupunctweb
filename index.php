@@ -71,14 +71,20 @@ if(isset($_GET['page']))
             $template->draw('signup_user');
             break;
         default:
+            $listArticles= getListArticles();
+            $template->assign("listArticles",$listArticles);
             $template->assign("activepage","index");
-            $template->draw('index');
+            $html=$template->draw('index',$return_string = true);
+            echo $html;
             break;
     }
 }
 else{
+    $listArticles= getListArticles();
+    $template->assign("listArticles",$listArticles);
     $template->assign("activepage","index");
-    $template->draw('index');
+    $html=$template->draw('index',$return_string = true);
+    echo $html;
 }
 
 

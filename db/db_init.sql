@@ -2432,6 +2432,30 @@ INSERT INTO `symptPatho` (`idS`, `idP`, `aggr`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `articles`
+--
+
+CREATE TABLE `articles` (
+  `id` int(11) NOT NULL,
+  `author` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Content` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `datePub` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`id`, `author`, `title`, `Content`, `datePub`) VALUES
+  (1, 'Arthur', 'Cecic est un titre de test', 'klcdjklcjkdsnjkcsdjkvjksndncsdnvjsnjvndfjksnvjl\r\ncidciodsion\r\nd,pcds,opvsf,o', '2015-04-04 09:00:00'),
+  (3, 'Arthur', 'Ceci est un deuxieme titre de test', 'enfin du vrai texte dedans !!!!', '2015-04-04 11:34:57');
+
+-- --------------------------------------------------------
+
+
+-- --------------------------------------------------------
+--
 -- Table structure for table `users`
 --
 
