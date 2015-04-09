@@ -1,8 +1,33 @@
 {include="header"}
+<h2>Administration des articles</h2>
+<h3>Nouvel article</h3>
+<div>
+    <form class="form-horizontal" method="post" action="index.php?page=admin&add=art">
+        <div class="form-group">
+            <label for="inputTitle" class="col-sm-2 control-label">Titre</label>
+            <div class="col-sm-10">
+                <input name="inputTitle" type="text" class="form-control" id="inputTitle" placeholder="Titre">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputArticle" class="col-sm-2 control-label">Texte</label>
+            <div class="col-sm-10">
+                <textarea name="inputArticle" type="text" class="form-control" id="inputArticle" placeholder="Contenu"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-8 col-sm-7">
+                <button type="submit" class="btn btn-default">Créer le nouvel article</button>
+            </div>
+        </div>
+    </form>
+</div>
 <div class="blog-post">
+    <br/>
+    <h3>Liste des articles</h3>
     {loop="$listArticles"}
-    <h2 class="blog-post-title"> {$value.title}</h2>
-    <p class="blog-post-meta">{$value.datePub} par {$value.author} <a href="">Supprimer</a></p>
+    <h4> {$value.title}</h4>
+    <p>{$value.datePub} par {$value.author} <a href="index.php?page=admin&delete={$value.id}">Supprimer</a></p>
     {/loop}
 </div>
 {include="sidebar"}

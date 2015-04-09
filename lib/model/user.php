@@ -16,20 +16,61 @@
 //include_once('config.php');
 require_once('db.php');
 
-function createUser($login, $password, $name, $mail)
-{
+
+class User {
+    private $userID;
+    private $isAdmin;
+    private $login;
+    private $lastname;
+    private $firstname;
+
+    public function __construct($login,$id, $admin, $firstname, $lastname)
+    {
+        $this->userID = $id;
+        $this->isAdmin = $admin;
+        $this->login = $login;
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+    }
+
+    public function getID()
+    {
+        return $this->userID;
+    }
+
+    public function isAdmin()
+    {
+        return $this->isAdmin;
+    }
+
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
 
 }
 
 function getUser($login)
 {
     $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
-    $sql_prepared = $db->pdo->prepare("SELECT firstname FROM users WHERE login=?");
+    $sql_prepared = $db->pdo->prepare("SELECT firstname, lastname, id, login, admin FROM users WHERE login=?");
     $sql_prepared->execute(array($login));
-    $sql_result =  $sql_prepared->fetchColumn();
+    $sql_result =  $sql_prepared->fetchAll();
     if($sql_result)
     {
-        return $sql_result;
+        //var_dump($sql_result);
+        $user = new User($sql_result[0]['login'], $sql_result[0]['id'], $sql_result[0]['admin'], $sql_result[0]['firstname'], $sql_result[0]['lastname']);
+        return $user;
     }else{
         return null;
     }

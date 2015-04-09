@@ -52,7 +52,8 @@ function connect()
             {
                 $_SESSION['loginConnection'] = 'connected';
                 $_SESSION['user'] = $_POST['login'];
-                $_SESSION['userName'] = getUser($_POST['login']);
+                $_SESSION['userName'] = getUser($_POST['login'])->getFirstname();
+                $_SESSION['admin'] = getUser($_POST['login'])->isAdmin();
             }else{
                 $_SESSION['loginConnection'] = 'invalidLogin';
             }

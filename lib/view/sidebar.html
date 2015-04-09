@@ -4,7 +4,11 @@
         <h2>Mon compte</h2>
         {if="$loginConnection=='connected'"}
         <div class="text"><p>Bienvenue {$userName} !</p></div>
+        {if="$admin=='1'"}
+        <div class="text"><p><a href="index.php?page=admin">Administration</a></p></div>
+        {/if}
         <div class="text"><p><a href="/lib/control/action.php?action=disconnect">Déconnexion</a></p></div>
+
         {else}
         <form method="post" action="lib/control/action.php?action=connect">
             <div class="form-group">

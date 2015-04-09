@@ -37,7 +37,7 @@ h6, .h6 {
  */
 
 .blog-masthead {
-    background-color: #ca3536;
+    background-color: #09bd00;
     -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
     box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
@@ -87,7 +87,7 @@ h6, .h6 {
     margin-top: 30px;
     margin-bottom: 0;
     font-size: 60px;
-    color: #ca3536;
+    color: #09BD00;
     font-weight: normal;
     text-shadow: 2px 2px 12px rgba(150, 150, 150, 1);
 }

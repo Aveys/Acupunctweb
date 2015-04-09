@@ -67,6 +67,7 @@ if(isset($_GET['page']))
             $template->draw('about');
             break;
         case "admin":
+            adminArticles();
             $listArticles= getListArticles();
             $template->assign("listArticles",$listArticles);
             $template->assign("activepage","admin");

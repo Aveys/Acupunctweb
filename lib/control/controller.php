@@ -174,4 +174,21 @@ function getListArticles(){
 }
 
 
+function adminArticles()
+{
+    if(isset($_SESSION['admin']) && $_SESSION['admin'] == '1')
+    {
+        if (isset($_GET['delete']))
+        {
+            deleteArticle($_GET['delete']);
+        }
+
+        if (isset($_GET['add']) && isset($_POST['inputTitle']) && isset($_POST['inputArticle']))
+        {
+            addArticle($_POST['inputTitle'], $_POST['inputArticle'], $_SESSION['user']);
+        }
+    }
+}
+
+
 ?>
