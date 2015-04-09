@@ -2,8 +2,8 @@
 -- version 4.2.10
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:8889
--- Generation Time: Feb 26, 2015 at 10:49 AM
+-- Host: localhost:3306
+-- Generation Time: Apr 09, 2015 at 01:43 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.6.2
 
@@ -11,8 +11,30 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `Acuponctweb`
+-- Database: `acupunctweb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `articles`
+--
+
+CREATE TABLE `articles` (
+  `id` int(11) NOT NULL,
+  `author` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Content` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `datePub` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`id`, `author`, `title`, `Content`, `datePub`) VALUES
+(1, 'Arthur', 'Cecic est un titre de test', 'klcdjklcjkdsnjkcsdjkvjksndncsdnvjsnjvndfjksnvjl\r\ncidciodsion\r\nd,pcds,opvsf,o', '2015-04-04 09:00:00'),
+(3, 'Arthur', 'Ceci est un deuxieme titre de test', 'enfin du vrai texte dedans !!!!', '2015-04-04 11:34:57');
 
 -- --------------------------------------------------------
 
@@ -900,8 +922,6 @@ CREATE TABLE `keywords` (
 --
 
 INSERT INTO `keywords` (`idK`, `name`) VALUES
-(1, '\\xiiE'),
-(2, '\\xxxiiE'),
 (3, '2ème orteil'),
 (4, '3ème orteil'),
 (5, '4ème orteil'),
@@ -2432,30 +2452,6 @@ INSERT INTO `symptPatho` (`idS`, `idP`, `aggr`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `articles`
---
-
-CREATE TABLE `articles` (
-  `id` int(11) NOT NULL,
-  `author` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Content` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `datePub` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `articles`
---
-
-INSERT INTO `articles` (`id`, `author`, `title`, `Content`, `datePub`) VALUES
-  (1, 'Arthur', 'Cecic est un titre de test', 'klcdjklcjkdsnjkcsdjkvjksndncsdnvjsnjvndfjksnvjl\r\ncidciodsion\r\nd,pcds,opvsf,o', '2015-04-04 09:00:00'),
-  (3, 'Arthur', 'Ceci est un deuxieme titre de test', 'enfin du vrai texte dedans !!!!', '2015-04-04 11:34:57');
-
--- --------------------------------------------------------
-
-
--- --------------------------------------------------------
---
 -- Table structure for table `users`
 --
 
@@ -2463,10 +2459,18 @@ CREATE TABLE `users` (
 `id` bigint(20) unsigned NOT NULL,
   `login` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `admin` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `login`, `password`, `firstname`, `lastname`, `email`, `admin`) VALUES
+(1, 'testlogin', 'testpwd', 'testfirstname', 'testlastname', 'testmail', 0);
 
 --
 -- Indexes for dumped tables
@@ -2537,4 +2541,4 @@ MODIFY `idS` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id du symptome',AUTO_INCRE
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;

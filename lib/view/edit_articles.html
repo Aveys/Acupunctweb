@@ -1,0 +1,9 @@
+{include="header"}
+<div class="blog-post">
+    {loop="$listArticles"}
+    <h2 class="blog-post-title"> {$value.title}</h2>
+    <p class="blog-post-meta">{$value.datePub} par {$value.author} <a href="">Supprimer</a></p>
+    {/loop}
+</div>
+{include="sidebar"}
+{include="footer"}

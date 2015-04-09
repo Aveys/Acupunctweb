@@ -66,6 +66,12 @@ if(isset($_GET['page']))
             $template->assign("activepage","about");
             $template->draw('about');
             break;
+        case "admin":
+            $listArticles= getListArticles();
+            $template->assign("listArticles",$listArticles);
+            $template->assign("activepage","admin");
+            $template->draw('edit_articles');
+            break;
         case "signup":
             $template->assign("activepage","signup");
             $template->draw('signup_user');
