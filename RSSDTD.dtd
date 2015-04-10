@@ -1,0 +1,11 @@
+    <!ELEMENT rss (channel)>
+    <!ATTLIST rss version CDATA #FIXED "2.0">
+            <!ELEMENT channel ((item+)|
+                    (title,link,description))>
+            <!ELEMENT item ((title|description)+,link?,
+                    (pubDate)*)>
+            <!ELEMENT description (#PCDATA)>
+            <!ELEMENT lastBuildDate (#PCDATA)>
+            <!ELEMENT link (#PCDATA)>
+            <!ELEMENT pubDate (#PCDATA)>
+            <!ELEMENT title (#PCDATA)>

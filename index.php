@@ -77,6 +77,15 @@ if(isset($_GET['page']))
             $template->assign("activepage","signup");
             $template->draw('signup_user');
             break;
+        case "refreshRSS":
+            //HACK FOR MANUALLY REFRESH THE RSS
+            updateRSS();
+            $listArticles= getListArticles();
+            $template->assign("listArticles",$listArticles);
+            $template->assign("activepage","index");
+            $html=$template->draw('index',$return_string = true);
+            echo $html;
+            break;
         default:
             $listArticles= getListArticles();
             $template->assign("listArticles",$listArticles);

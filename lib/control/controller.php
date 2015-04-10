@@ -11,6 +11,7 @@ require_once 'lib/model/user.php';
 require_once 'lib/model/pathologie.php';
 require_once 'lib/model/meridien.php';
 require_once 'lib/model/articles.php';
+require_once 'rssUpdater.php';
 
 function initAll()
 {
