@@ -12,6 +12,7 @@ function updateRSS(){
     // édition du début du fichier XML
     $date1=("D, d M Y H:i:s");
     $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\">\n";
+    $xml .= "<!DOCTYPE rss SYSTEM \"RSSDTD.dtd\">";
     $xml .= "<channel>\n";
     $xml .= "<title>Acupunctweb</title>\n";
     $xml .= "<lastBuildDate>".$date1."</lastBuildDate>";
