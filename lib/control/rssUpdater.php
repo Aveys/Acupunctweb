@@ -10,15 +10,17 @@ require_once "lib/model/articles.php";
 
 function updateRSS(){
     // édition du début du fichier XML
+    $date1=("D, d M Y H:i:s");
     $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\">\n";
     $xml .= "<channel>\n";
     $xml .= "<title>Acupunctweb</title>\n";
+    $xml .= "<lastBuildDate>".$date1."</lastBuildDate>";
     $xml .= "<link>http://www.acupunctweb.fr</link>\n";
-    $xml .= "<description>La référence de l\'acupuncture</description>\n";
+    $xml .= "<description>La référence de l'acupuncture</description>\n";
 
     $listArticles=getArticles();
     foreach ($listArticles as $value) {
-        $date2 = $date2=date("D, d M Y H:i:s", strtotime($value["datePub"]));
+        $date2 = date("D, d M Y H:i:s", strtotime($value["datePub"]));
         $xml .= "<item>\n";
         $xml .= "<title>".utf8_encode($value["title"])."</title>\n";
         $xml .= "<link>http://www.acupunctweb.fr</link>\n";
