@@ -13,6 +13,9 @@ require_once 'lib/model/meridien.php';
 require_once 'lib/model/articles.php';
 require_once 'rssUpdater.php';
 
+/**
+ * Initialization function for RainTPL template.
+ */
 function initAll()
 {
     global $template;
@@ -42,17 +45,20 @@ function initAll()
     //$db->initDB(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
 }
 
-/*function user_connect($login, $pwd)
-{
-
-}*/
-
+/**
+ * Function used for disconnecting user
+ */
 function user_disconnect()
 {
     global $template;
     $template->assign('user', 'NULL');
     $template->assign('loginConnection', 'disconnected');
 }
+
+/**
+ * Returns symptomes list from Patho
+ * @return array (Symptomes)
+ */
 function getListSymptByPatho(){
     $listpatho = array();
     $listfin=array();
@@ -67,6 +73,11 @@ function getListSymptByPatho(){
     }
     return $listfin;
 }
+
+/**
+ * Returns the list of Meridiens
+ * @return array (Meridiens)
+ */
 function getListMeridien(){
     $listMer = getMeridien();
     $prettyTable=array();
@@ -75,6 +86,11 @@ function getListMeridien(){
     }
     return $prettyTable;
 }
+
+/**
+ * Returns all types
+ * @return array (Types)
+ */
 function getListType(){
     $listMer = getTypes();
     $prettyTable=array();
@@ -83,6 +99,13 @@ function getListType(){
     }
     return $prettyTable;
 }
+
+/**
+ * Returns list of sympt from filtered pathos
+ * @param $mer
+ * @param $type
+ * @return array (Symptomes)
+ */
 function getListSymptByPathoFiltred($mer,$type){
     $listpatho = array();
     $listfin=array();
@@ -108,6 +131,10 @@ function getListSymptByPathoFiltred($mer,$type){
     return $listfin;
 }
 
+/**
+ * Returns list of patho by list of filters
+ * @return array (list of pathos)
+ */
 function getSearchResults()
 {
     $listpatho = array();
@@ -148,6 +175,9 @@ function getSearchResults()
 
 }
 
+/**
+ * Get all filters for search (in order not to loose filters by changing page)
+ */
 function getSearchFilters()
 {
     global $template;
@@ -176,11 +206,17 @@ function getSearchFilters()
     }
 
 }
+
+/**
+ * @return array (Articles)
+ */
 function getListArticles(){
     return getArticles();
 }
 
-
+/**
+ * Function that process the admin commands (for articles)
+ */
 function adminArticles()
 {
     if(isset($_SESSION['admin']) && $_SESSION['admin'] == '1')
