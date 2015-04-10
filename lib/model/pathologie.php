@@ -7,6 +7,10 @@
  */
 include_once('config.php');
 require_once('db.php');
+
+/**
+ * Class Pathologie
+ */
 class Pathologie
 {
     var $symptomes;
@@ -37,6 +41,11 @@ class Pathologie
         return $this->nom;
     }
 }
+
+/**
+ * Returns all types of patho
+ * @return array (Types)
+ */
 function getTypes(){
     $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
     $query=$db->pdo->prepare('select distinct p.type as "TYPE" from patho p');

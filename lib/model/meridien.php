@@ -7,6 +7,10 @@
  */
 include_once('config.php');
 require_once('db.php');
+
+/**
+ * @return array (Meridiens)
+ */
 function getMeridien(){
 
     $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);

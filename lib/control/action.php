@@ -14,6 +14,9 @@ session_start();
 
 global $template;
 
+/**
+ * Switch on action (GET argument)
+ */
 if(isset($_GET['action']))
 {
     switch($_GET['action'])
@@ -42,6 +45,9 @@ if(isset($_GET['action']))
     header('Location: /index.php');
 }
 
+/**
+ * Action: connect
+ */
 function connect()
 {
     if(isset($_POST['login']) && isset($_POST['pwd']))
@@ -66,11 +72,18 @@ function connect()
 
 }
 
+/**
+ * Action: disconnect
+ */
 function disconnect()
 {
     session_unset();
 }
 
+/**
+ * Action: Signup user
+ * @return bool
+ */
 function signup()
 {
     if(isset($_POST['inputUsername']) && isset($_POST['inputFirstname']) && isset($_POST['inputLastname']) && isset($_POST['inputEmail']) && isset($_POST['inputPassword']) && isset($_POST['inputPassword2']))
