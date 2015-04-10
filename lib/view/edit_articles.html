@@ -1,5 +1,7 @@
 {include="header"}
 <h2>Administration des articles</h2>
+{if="$loginConnection=='connected'"}
+{if="$admin=='1'"}
 <hr/>
 <h3>Nouvel article</h3>
 <div>
@@ -32,5 +34,15 @@
     <p>{$value.datePub} par {$value.author} <a href="index.php?page=admin&delete={$value.id}">Supprimer</a></p>
     {/loop}
 </div>
+{else}
+<div class="alert alert-warning" role="alert">
+    Vous ne possédez pas les droits suffisants pour accéder à cette section.
+</div>
+{/if}
+{else}
+<div class="alert alert-warning" role="alert">
+    Veuillez vous identifier en tant qu'administrateur pour accéder à cette section.
+</div>
+{/if}
 {include="sidebar"}
 {include="footer"}

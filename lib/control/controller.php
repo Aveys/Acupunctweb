@@ -114,9 +114,15 @@ function getSearchResults()
     $listfin=array();
     $filter_string = 'REGEXP \'(';
 
-   if(isset($_POST['filters']))
+   if(isset($_POST['filters']) || isset($_POST['inputTextSearch']))
    {
-       $array = $_POST['filters'];
+       if(isset($_POST['filters'])){
+           $array = $_POST['filters'];
+       }
+       if(isset($_POST['inputTextSearch']) && $_POST['inputTextSearch'] !== "")
+       {
+           $array[] = $_POST['inputTextSearch'];
+       }
        for($i = 0, $size = count($array); $i < $size; $i++)
        {
            $filter_string = $filter_string . $array[$i];
@@ -126,7 +132,7 @@ function getSearchResults()
            }
        }
        $filter_string = $filter_string . ')\'';
-       echo $filter_string;
+       //echo $filter_string;
 
        $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
        $temp = $db->pdo->query('Select pat.idP from patho pat, symptome sym, keySympt ks, keywords ke, symptPatho sp where ks.idK = ke.idK AND ks.idS = sym.idS AND sp.idS = sym.ids AND sp.idp = pat.idP AND ke.name ' . $filter_string . ";");
@@ -189,6 +195,7 @@ function adminArticles()
             addArticle($_POST['inputTitle'], $_POST['inputArticle'], $_SESSION['user']);
         }
     }
+    updateRSS();
 }
 
 
