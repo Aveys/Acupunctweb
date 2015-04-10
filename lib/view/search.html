@@ -1,6 +1,7 @@
 {include="header"}
 {if="$loginConnection=='connected'"}
-<h2>Recherche de pathologies</h2><br/>
+<h2>Recherche de pathologies</h2>
+<hr/>
 <form class="form-inline" method="post" action="index.php?page=search">
     <div class="form-group" id="searchForm">
         <!--<label for="SELSympt">Symptome :</label>
@@ -29,6 +30,7 @@
 
 </form>
 <h3>Résultats de la recherche</h3>
+<hr/>
 <div id="tabloPatho">
     <table id="tableDeDonnees" class="table table-bordered">
         <caption>Tableaux des symptômes par pathologie</caption>

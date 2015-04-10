@@ -1,5 +1,6 @@
 {include="header"}
 <h2>Administration des articles</h2>
+<hr/>
 <h3>Nouvel article</h3>
 <div>
     <form class="form-horizontal" method="post" action="index.php?page=admin&add=art">
@@ -25,6 +26,7 @@
 <div class="blog-post">
     <br/>
     <h3>Liste des articles</h3>
+    <hr/>
     {loop="$listArticles"}
     <h4> {$value.title}</h4>
     <p>{$value.datePub} par {$value.author} <a href="index.php?page=admin&delete={$value.id}">Supprimer</a></p>

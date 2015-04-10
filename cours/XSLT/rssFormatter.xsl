@@ -3,21 +3,24 @@
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns="http://www.w3.org/TR/xhtml1/strict">
     <xsl:output method="html"/>
-    <html>
-        <head>
+    <xsl:template match="/">
+        <html>
+            <head>
 
-        </head>
-        <body>
-        <xsl:template match="/">
+            </head>
+            <body>
+                <h1><xsl:value-of select="channel/title"/></h1>
+                <h1><xsl:value-of select="channel/description"/></h1>
+                <ul>
+                <xsl:for-each select="channel/item">
+                    <ul>
+                        <li><xsl:value-of select="title" /></li>
+                        <li><xsl:value-of select="description" /></li>
 
-            <xsl:for-each select="feed_info/entry_1">
-                <Record>
-                    <ID><xsl:value-of select="id" /></ID>
-                    <PublicationDate><xsl:value-of select='xs:dateTime("1970-01-01T00:00:00") + xs:integer(pub_date) * xs:dayTimeDuration("PT1S")'/></PublicationDate>
-                </Record>
-            </xsl:for-each>
-        </Records>
-        </xsl:template>
-    </body>
-    </html>
+                    </ul>
+                </xsl:for-each>
+                </ul>
+            </body>
+        </html>
+    </xsl:template>
 </xsl:stylesheet>
