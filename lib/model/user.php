@@ -16,7 +16,9 @@
 //include_once('config.php');
 require_once('db.php');
 
-
+/**
+ * Class User
+ */
 class User {
     private $userID;
     private $isAdmin;
@@ -24,6 +26,14 @@ class User {
     private $lastname;
     private $firstname;
 
+    /**
+     * Constructor
+     * @param $login Login (username)
+     * @param $id userID
+     * @param $admin user is admin or not
+     * @param $firstname User firstname
+     * @param $lastname User lastname
+     */
     public function __construct($login,$id, $admin, $firstname, $lastname)
     {
         $this->userID = $id;
@@ -33,26 +43,41 @@ class User {
         $this->lastname = $lastname;
     }
 
+    /**
+     * @return User ID
+     */
     public function getID()
     {
         return $this->userID;
     }
 
+    /**
+     * @return user authorization (admin or not)
+     */
     public function isAdmin()
     {
         return $this->isAdmin;
     }
 
+    /**
+     * @return login (username)
+     */
     public function getLogin()
     {
         return $this->login;
     }
 
+    /**
+     * @return Firstname
+     */
     public function getFirstname()
     {
         return $this->firstname;
     }
 
+    /**
+     * @return Lastname
+     */
     public function getLastname()
     {
         return $this->lastname;
@@ -60,6 +85,10 @@ class User {
 
 }
 
+/**
+ * @param $login (username)
+ * @return null|User (object from User class)
+ */
 function getUser($login)
 {
     $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
@@ -77,6 +106,12 @@ function getUser($login)
 
 }
 
+/**
+ * User connection from login and password
+ * @param $login
+ * @param $password
+ * @return bool (connection result)
+ */
 function user_connect($login, $password)
 {
     $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
@@ -92,6 +127,16 @@ function user_connect($login, $password)
     return $result;
 }
 
+/**
+ * User creation from user data
+ * @param $username
+ * @param $firstname
+ * @param $lastname
+ * @param $email
+ * @param $passwd1
+ * @param $passwd2
+ * @return bool (user creation result)
+ */
 function user_create($username, $firstname, $lastname, $email, $passwd1, $passwd2)
 {
     $result = false;
