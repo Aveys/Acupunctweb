@@ -42,7 +42,7 @@ h6, .h6 {
  */
 
 .blog-masthead {
-    background-color: #09bd00;
+    background-color: #ca3536;
     -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
     box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
@@ -92,9 +92,9 @@ h6, .h6 {
     margin-top: 30px;
     margin-bottom: 0;
     font-size: 60px;
-    color: #09BD00;
+    color: #ca3536;
     font-weight: normal;
-    text-shadow: 2px 2px 12px rgba(150, 150, 150, 1);
+    text-shadow: 2px 2px 12px rgba(150, 150, 150, 0.7);
 }
 .blog-description {
     font-size: 20px;
@@ -125,6 +125,7 @@ h6, .h6 {
  */
 body>.container{
     margin-top: 20px;
+    margin-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
     background-color: #FFFFFF;

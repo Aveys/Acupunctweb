@@ -6,18 +6,18 @@
     <xsl:template match="/">
         <html>
             <head>
-
             </head>
             <body>
-                <h1><xsl:value-of select="channel/title"/></h1>
-                <h1><xsl:value-of select="channel/description"/></h1>
+                <h1>L'actualité de la santée</h1>
+                <h2><xsl:value-of select="rss/channel/title"/></h2>
+                <h3>Nombre d'articles : <xsl:value-of select="count(rss/channel/item)"/></h3>
                 <ul>
-                <xsl:for-each select="channel/item">
-                    <ul>
+                <xsl:for-each select="rss/channel/item">
+                    <li><ul>
                         <li><xsl:value-of select="title" /></li>
                         <li><xsl:value-of select="description" /></li>
-
-                    </ul>
+                        <li><a><xsl:value-of select="link" /></a></li>
+                    </ul></li>
                 </xsl:for-each>
                 </ul>
             </body>
