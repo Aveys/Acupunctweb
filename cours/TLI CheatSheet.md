@@ -27,13 +27,13 @@ configuration
 matérielle et sa configuration logicielle, est capable d’apprécier le contenu de ce site
 de la même manière que tout autre utilisateur pourvu de configurations différentes.
 
-Avanatages : 
+**Avantages :** 
 * modélisation robuste
 * garantie de portabilité et d'adaptation
 * facilité d'évolution
 * Aspect politique et com
 
-Inconvénients : 
+**Inconvénients :** 
 * convaincre les décideurs et négocier avec les webdesigners
 * à envisager dés le début du projet
 * conception + longue
@@ -221,7 +221,7 @@ Ecriture directe sauf si
 * copy-of select="noeud" -> fragment (noeud+ascendant) (bloc de code)
 * <copy>    </copy>
 
-####XSL2
+#### XSL2
 
 as="" -> typage , ? -> ce type ou rien
 
@@ -256,13 +256,15 @@ Important : 2 types d'API différentes
 
 WebServices et REST
 ------
-** Principe: **
+**Principe:**
 * Encapsuler des services réseaux sur le web (passge par Port 80, donner accés à des données)
 * Délégation des compétences (*je demande a qqun qui fait mieux que moi*)
 * Dialogue entre machines
-** 2 approches **
+
+**2 approches**
 * Client-Serveur (historique)
 * Agents-Ressources
+
 ### WSDL
 Format de description des échange en XML. A utiliser avec SOAP ou UDDI
 
