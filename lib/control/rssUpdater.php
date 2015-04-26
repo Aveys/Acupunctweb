@@ -8,6 +8,10 @@
 require_once "lib/model/db.php";
 require_once "lib/model/articles.php";
 
+/**
+ * Generate an RSS file of articles at the root of the website
+ *
+ */
 function updateRSS(){
     // édition du début du fichier XML
     $date1=("D, d M Y H:i:s");

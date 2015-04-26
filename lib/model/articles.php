@@ -6,7 +6,7 @@
  */
 function getArticles(){
     $db = new Database(config::$DB_host, config::$DB_DBname, config::$DB_user, config::$DB_pwd);
-    $tmp = $db->pdo->query("SELECT id, title,Content,datePub,author FROM articles");
+    $tmp = $db->pdo->query("SELECT id, title,Content,datePub,author FROM articles order by datepub desc limit 5");
     $result= $tmp->fetchAll();
     return $result;
 }

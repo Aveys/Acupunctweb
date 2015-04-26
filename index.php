@@ -78,8 +78,8 @@ if(isset($_GET['page']))
             $template->draw('signup_user');
             break;
         case "biblio":
-            $template->assign("activepage","signup");
-            $template->draw('signup_user');
+            $template->assign("activepage","biblio");
+            $template->draw('biblio');
             break;
         case "refreshRSS":
             //HACK FOR MANUALLY REFRESH THE RSS
